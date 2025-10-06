@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="/transform"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
+      xmlns:sh="http://www.w3.org/ns/shacl#"
+      xmlns:xhv="http://www.w3.org/1999/xhtml/vocab#"
+      xmlns:dct="http://purl.org/dc/terms/"
+      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+      xmlns:prov="http://www.w3.org/ns/prov#"
+      xmlns:dcat="http://www.w3.org/ns/dcat#"
+      xmlns:bibo="http://purl.org/ontology/bibo/"
+      xmlns:bs="http://purl.org/ontology/bibo/status/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:vann="http://purl.org/vocab/vann/"
+      xmlns:cm="https://vocab.methodandstructure.com/cache-metadata#"
+      prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# xsd: http://www.w3.org/2001/XMLSchema# owl: http://www.w3.org/2002/07/owl# sh: http://www.w3.org/ns/shacl# xhv: http://www.w3.org/1999/xhtml/vocab# dct: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# dcat: http://www.w3.org/ns/dcat# bibo: http://purl.org/ontology/bibo/ bs: http://purl.org/ontology/bibo/status/ foaf: http://xmlns.com/foaf/0.1/ vann: http://purl.org/vocab/vann/ cm: https://vocab.methodandstructure.com/cache-metadata#"
+      vocab="http://www.w3.org/1999/xhtml/vocab#" xml:lang="en">
+  <head>
+    <title about="#" property="dct:title">Intertwingler Configuration Vocabulary</title>
+    <base href="https://vocab.methodandstructure.com/cache-metadata"/>
+    <meta about="#" property="vann:preferredNamespacePrefix" content="itcv" datatype="xsd:token"/>
+    <link about="#" rel="rdfs:isDefinedBy bibo:uri" href="#"/>
+    <link rel="bibo:status" href="http://purl.org/ontology/bibo/status/draft"/>
+    <link rel="up top contents index" href="/"/>
+  </head>
+  <body typeof="bibo:Specification">
+    <div rel="foaf:primaryTopic" resource="#" typeof="owl:Ontology">
+      <dl>
+        <dt>Author</dt>
+        <dd><a rel="dct:creator" href="https://doriantaylor.com/person/dorian-taylor#me" typeof="foaf:Person"><span property="foaf:name">Dorian Taylor</span></a></dd>
+        <dt>Created</dt>
+        <dd property="dct:created" datatype="xsd:dateTime" content="2025-10-04T02:17:27Z">September 6, 2023</dd>
+        <!--
+            <dt>Updated</dt>
+            <dd property="dct:modified" datatype="xsd:dateTime" content="2025-10-04T02:17:14Z">October 9, 2023</dd> -->
+        <dt>Namespace URI</dt>
+        <dd><a href="#"><code>https://vocab.methodandstructure.com/cache-metadata#</code></a></dd>
+        <dt>Preferred Namespace Prefix</dt>
+        <dd><code about="#" property="vann:preferredNamespacePrefix" datatype="xsd:token">cm</code></dd>
+      </dl>
+      <p property="rdfs:comment dct:description">This vocabulary is intended to describe the metadata necessary to positively identify <abbr>HTTP</abbr> cache entries.</p>
+    </div>
+    <section id="ch.classes" rel="dct:hasPart" resource="#ch.classes" typeof="bibo:DocumentPart">
+      <h2 property="dct:title">Classes</h2>
+      <section id="Entry" about="cm:Entry" typeof="owl:Class">
+        <h3 property="rdfs:label"><code>Entry</code></h3>
+        <p property="rdfs:comment">The class <code>cm:Entry</code> represents (canonically) an individual <abbr>HTTP</abbr> cache entry.</p>
+        <dl>
+          <dt>Subclass of:</dt>
+          <dd><a rel="rdfs:subClassOf" resource="prov:Entity" href="https://www.w3.org/TR/prov-o/#Entity"><code>prov:Entity</code></a></dd>
+          <dt>Properties:</dt>
+          <dd><a rev="rdfs:domain" href="#resource"><code>cm:resource</code></a></dd>
+          <dd><a rev="rdfs:domain" href="#principal"><code>cm:principal</code></a></dd>
+          <dd><a rev="rdfs:domain" href="#header"><code>cm:header</code></a></dd>
+        </dl>
+        <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
+      </section>
+    </section>
+    <section id="ch.properties" rel="dct:hasPart" resource="#ch.properties" typeof="bibo:DocumentPart">
+      <h2 property="dct:title">Properties</h2>
+      <section id="resource" about="cm:resource" typeof="owl:ObjectProperty">
+        <h3 property="rdfs:label"><code>resolver</code></h3>
+        <p property="rdfs:comment">This property maps the <code>itcv:Engine</code> to an <code>itcv:Resolver</code>.</p>
+        <dl>
+          <dt>Domain:</dt>
+          <dd><a rel="rdfs:domain" href="#"><code>cm:Entry</code></a></dd>
+        </dl>
+        <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
+      </section>
+    </section>
+    <section id="ch.references" rel="dct:hasPart" resource="#ch.references" typeof="bibo:DocumentPart">
+      <h2 property="dct:title">References</h2>
+      <ul>
+        <li rel="owl:imports" resource="ht:"><a rel="rdfs:seeAlso" href="https://www.w3.org/TR/HTTP-in-RDF10/"><span property="dct:title">HTTP Vocabulary in RDF 1.0</span></a></li>
+        <li rel="owl:imports" resource="prov:"><a rel="rdfs:seeAlso" href="https://www.w3.org/TR/prov-o/"><span property="dct:title">PROV-O: The PROV Ontology</span></a></li>
+        <li rel="owl:imports" resource="pav:"><a rel="rdfs:seeAlso" href="https://pav-ontology.github.io/pav/"><span property="dct:title">PAV &#x2014; Provenance, Authoring and Versioning</span></a></li>
+      </ul>
+    </section>
+  </body>
+</html>
