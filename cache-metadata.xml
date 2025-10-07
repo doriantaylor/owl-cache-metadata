@@ -45,8 +45,10 @@
         <dd><code about="#" property="vann:preferredNamespacePrefix" datatype="xsd:token">cache</code></dd>
       </dl>
       <p property="rdfs:comment dct:description">This vocabulary is intended to describe the metadata necessary to positively identify <abbr>HTTP</abbr> cache entries.</p>
-      <pre>@prefix cache: &lt;https://vocab.methodandstructure.com/cache-metadata#> .
+      <figure>
+        <pre>@prefix cache: &lt;https://vocab.methodandstructure.com/cache-metadata#> .
 @prefix tfo:   &lt;https://vocab.methodandstructure.com/transformation#> .
+@prefix dct:   &lt;http://purl.org/dc/terms/> .
 @prefix ht:    &lt;http://www.w3.org/2011/http#> .
 @prefix hth:   &lt;http://www.w3.org/2011/http-headers#> .
 @prefix htm:   &lt;http://www.w3.org/2011/http-methods#> .
@@ -68,11 +70,14 @@
   cache:method htm:GET ;
   cache:origin &lt;https://internet.home/page> ;
   cache:principal &lt;mailto:some@personal.email> ;
-  cache:private true ;
   dct:format "text/html"^^tfo:content-type ;
   dct:language "en"^^xsd:token ;
   dct:modified "2025-10-07T01:22:07Z"^^xsd:dateTime ;
   prov:generatedAtTime "2025-10-07T01:22:07Z"^^xsd:dateTime .</pre>
+  <figcaption>
+    <p><a href="https://www.w3.org/TR/turtle/">Turtle</a> serialization of an individual cache entry.</p>
+  </figcaption>
+      </figure>
     </div>
     <section id="ch.classes" rel="dct:hasPart" resource="#ch.classes" typeof="bibo:DocumentPart">
       <h2 property="dct:title">Classes</h2>
@@ -86,9 +91,12 @@
           <dt>Subclass of:</dt>
           <dd><a rel="rdfs:subClassOf" resource="prov:Entity" href="https://www.w3.org/TR/prov-o/#Entity"><code>prov:Entity</code></a></dd>
           <dt>Properties:</dt>
-          <dd><a rev="rdfs:domain" href="#resource"><code>cache:resource</code></a></dd>
-          <dd><a rev="rdfs:domain" href="#principal"><code>cache:principal</code></a></dd>
+          <dd><a rev="rdfs:domain" href="#entity"><code>cache:entity</code></a></dd>
+          <dd><a rev="rdfs:domain" href="#expires"><code>cache:expires</code></a></dd>
           <dd><a rev="rdfs:domain" href="#header"><code>cache:header</code></a></dd>
+          <dd><a rev="rdfs:domain" href="#method"><code>cache:method</code></a></dd>
+          <dd><a rev="rdfs:domain" href="#origin"><code>cache:origin</code></a></dd>
+          <dd><a rev="rdfs:domain" href="#principal"><code>cache:principal</code></a></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
@@ -98,7 +106,7 @@
       <figure>
         <object type="image/svg+xml" data="cache-metadata-properties.svg"><img src="cache-metadata-properties" alt=""/></object>
       </figure>
-      <section id="entity" about="cache:entity" typeof="owl:ObjectProperty">
+      <section id="entity" about="cache:entity" typeof="owl:ObjectProperty owl:FunctionalProperty">
         <h3 property="rdfs:label"><code>entity</code></h3>
         <p property="rdfs:comment">This denotes the actual literal representation of the cache entry.</p>
         <dl>
@@ -106,6 +114,8 @@
           <dd><a rel="rdfs:domain" href="#Entry"><code>cache:Entry</code></a></dd>
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" resource="rdfs:Resource" href="https://www.w3.org/TR/rdf-schema/#ch_resource"><code>rdfs:Resource</code></a></dd>
+          <dt>Cardinality:</dt>
+          <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
@@ -117,6 +127,8 @@
           <dd><a rel="rdfs:domain" href="#Entry"><code>cache:Entry</code></a></dd>
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" resource="xsd:dateTime" href="https://www.w3.org/TR/xmlschema11-2/#dateTime"><code>xsd:dateTime</code></a></dd>
+          <dt>Cardinality:</dt>
+          <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
@@ -131,7 +143,7 @@
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
-      <section id="method" about="cache:method" typeof="owl:ObjectProperty">
+      <section id="method" about="cache:method" typeof="owl:ObjectProperty owl:FunctionalProperty">
         <h3 property="rdfs:label"><code>method</code></h3>
         <p property="rdfs:comment">Denotes the <abbr>HTTP</abbr> method of the associated request.</p>
         <dl>
@@ -139,10 +151,12 @@
           <dd><a rel="rdfs:domain" href="#Entry"><code>cache:Entry</code></a></dd>
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" resource="ht:Method" href="https://www.w3.org/TR/HTTP-in-RDF10/#MethodClass"><code>ht:Method</code></a></dd>
+          <dt>Cardinality:</dt>
+          <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
-      <section id="origin" about="cache:origin" typeof="owl:ObjectProperty">
+      <section id="origin" about="cache:origin" typeof="owl:ObjectProperty owl:FunctionalProperty">
         <h3 property="rdfs:label"><code>origin</code></h3>
         <p property="rdfs:comment">This relates the cache entry to the origin resource that was retrieved.</p>
         <dl>
@@ -150,12 +164,17 @@
           <dd><a rel="rdfs:domain" href="#Entry"><code>cache:Entry</code></a></dd>
           <dt>Range:</dt>
           <dd><a rel="rdfs:range" resource="rdfs:Resource" href="https://www.w3.org/TR/rdf-schema/#ch_resource"><code>rdfs:Resource</code></a></dd>
+          <dt>Cardinality:</dt>
+          <dd><code property="owl:cardinality" datatype="xsd:integer">1</code></dd>
         </dl>
         <p><a rel="rdfs:isDefinedBy" href="#">Back to Top</a></p>
       </section>
-      <section id="principal" about="cache:principal" typeof="owl:ObjectProperty">
+      <section id="principal" about="cache:principal" typeof="owl:ObjectProperty owl:FunctionalProperty">
         <h3 property="rdfs:label"><code>principal</code></h3>
-        <p property="rdfs:comment">This relates the cache entry to the origin resource that was retrieved.</p>
+        <p property="rdfs:comment">This relates the cache entry to an authentication principal, if applicable.</p>
+        <aside role="note">
+          <p property="skos:usageNote">The presence of a principal implies the cache entry is private.</p>
+        </aside>
         <dl>
           <dt>Domain:</dt>
           <dd><a rel="rdfs:domain" href="#"><code>cache:Entry</code></a></dd>

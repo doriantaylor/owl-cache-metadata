@@ -1,5 +1,6 @@
 @prefix cache: <https://vocab.methodandstructure.com/cache-metadata#> .
 @prefix tfo:   <https://vocab.methodandstructure.com/transformation#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
 @prefix ht:    <http://www.w3.org/2011/http#> .
 @prefix hth:   <http://www.w3.org/2011/http-headers#> .
 @prefix htm:   <http://www.w3.org/2011/http-methods#> .

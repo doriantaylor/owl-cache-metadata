@@ -17,34 +17,38 @@ Preferred Namespace Prefix
 This vocabulary is intended to describe the metadata necessary to
 positively identify HTTP cache entries.
 
-    @prefix cache: <https://vocab.methodandstructure.com/cache-metadata#> .
-    @prefix tfo:   <https://vocab.methodandstructure.com/transformation#> .
-    @prefix ht:    <http://www.w3.org/2011/http#> .
-    @prefix hth:   <http://www.w3.org/2011/http-headers#> .
-    @prefix htm:   <http://www.w3.org/2011/http-methods#> .
-    @prefix prov:  <http://www.w3.org/ns/prov#> .
-    @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+<figure>
+<pre><code>@prefix cache: &lt;https://vocab.methodandstructure.com/cache-metadata#&gt; .
+@prefix tfo:   &lt;https://vocab.methodandstructure.com/transformation#&gt; .
+@prefix dct:   &lt;http://purl.org/dc/terms/&gt; .
+@prefix ht:    &lt;http://www.w3.org/2011/http#&gt; .
+@prefix hth:   &lt;http://www.w3.org/2011/http-headers#&gt; .
+@prefix htm:   &lt;http://www.w3.org/2011/http-methods#&gt; .
+@prefix prov:  &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix xsd:   &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
-    <urn:uuid:b30c0e75-6b53-4212-8b95-a04629aa03d9> a cache:Entry ;
-      cache:entity <ni:///sha-256;ocz5wuIt2_E5vOW_DqPkJSONCUg61TPJ8c81fBKH5co> ;
-      cache:expires "2025-10-07T01:52:07Z"^^xsd:dateTime ;
-      cache:header [
-        a ht:RequestHeader ;
-        ht:hdrName hth:accept ;
-        ht:fieldName "Accept";
-        ht:fieldValue "text/html, application/xhtml+xml, */*;q=0.1" ], [
-        a ht:RequestHeader ;
-        ht:hdrName hth:accept-language ;
-        ht:fieldName "Accept-Language";
-        ht:fieldValue "en-us, en, fr;q=0.8" ] ;
-      cache:method htm:GET ;
-      cache:origin <https://internet.home/page> ;
-      cache:principal <mailto:some@personal.email> ;
-      cache:private true ;
-      dct:format "text/html"^^tfo:content-type ;
-      dct:language "en"^^xsd:token ;
-      dct:modified "2025-10-07T01:22:07Z"^^xsd:dateTime ;
-      prov:generatedAtTime "2025-10-07T01:22:07Z"^^xsd:dateTime .
+&lt;urn:uuid:b30c0e75-6b53-4212-8b95-a04629aa03d9&gt; a cache:Entry ;
+  cache:entity &lt;ni:///sha-256;ocz5wuIt2_E5vOW_DqPkJSONCUg61TPJ8c81fBKH5co&gt; ;
+  cache:expires &quot;2025-10-07T01:52:07Z&quot;^^xsd:dateTime ;
+  cache:header [
+    a ht:RequestHeader ;
+    ht:hdrName hth:accept ;
+    ht:fieldName &quot;Accept&quot;;
+    ht:fieldValue &quot;text/html, application/xhtml+xml, */*;q=0.1&quot; ], [
+    a ht:RequestHeader ;
+    ht:hdrName hth:accept-language ;
+    ht:fieldName &quot;Accept-Language&quot;;
+    ht:fieldValue &quot;en-us, en, fr;q=0.8&quot; ] ;
+  cache:method htm:GET ;
+  cache:origin &lt;https://internet.home/page&gt; ;
+  cache:principal &lt;mailto:some@personal.email&gt; ;
+  dct:format &quot;text/html&quot;^^tfo:content-type ;
+  dct:language &quot;en&quot;^^xsd:token ;
+  dct:modified &quot;2025-10-07T01:22:07Z&quot;^^xsd:dateTime ;
+  prov:generatedAtTime &quot;2025-10-07T01:22:07Z&quot;^^xsd:dateTime .</code></pre>
+<figcaption><p><a href="https://www.w3.org/TR/turtle/">Turtle</a>
+serialization of an individual cache entry.</p></figcaption>
+</figure>
 
 </div>
 
@@ -70,14 +74,23 @@ Subclass of:
 resource="prov:Entity"><code>prov:Entity</code></a>
 
 Properties:  
-<a href="https://vocab.methodandstructure.com/cache-metadata#resource"
-rev="rdfs:domain"><code>cache:resource</code></a>
+<a href="https://vocab.methodandstructure.com/cache-metadata#entity"
+rev="rdfs:domain"><code>cache:entity</code></a>
 
-<a href="https://vocab.methodandstructure.com/cache-metadata#principal"
-rev="rdfs:domain"><code>cache:principal</code></a>
+<a href="https://vocab.methodandstructure.com/cache-metadata#expires"
+rev="rdfs:domain"><code>cache:expires</code></a>
 
 <a href="https://vocab.methodandstructure.com/cache-metadata#header"
 rev="rdfs:domain"><code>cache:header</code></a>
+
+<a href="https://vocab.methodandstructure.com/cache-metadata#method"
+rev="rdfs:domain"><code>cache:method</code></a>
+
+<a href="https://vocab.methodandstructure.com/cache-metadata#origin"
+rev="rdfs:domain"><code>cache:origin</code></a>
+
+<a href="https://vocab.methodandstructure.com/cache-metadata#principal"
+rev="rdfs:domain"><code>cache:principal</code></a>
 
 <a href="https://vocab.methodandstructure.com/cache-metadata#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -97,7 +110,7 @@ src="https://vocab.methodandstructure.com/cache-metadata-properties" />
 </figure>
 
 <div id="entity" class="section" about="cache:entity"
-typeof="owl:ObjectProperty">
+typeof="owl:ObjectProperty owl:FunctionalProperty">
 
 ### `entity`
 
@@ -110,6 +123,9 @@ rel="rdfs:domain"><code>cache:Entry</code></a>
 Range:  
 <a href="https://www.w3.org/TR/rdf-schema/#ch_resource" rel="rdfs:range"
 resource="rdfs:Resource"><code>rdfs:Resource</code></a>
+
+Cardinality:  
+`1`
 
 <a href="https://vocab.methodandstructure.com/cache-metadata#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -130,6 +146,9 @@ rel="rdfs:domain"><code>cache:Entry</code></a>
 Range:  
 <a href="https://www.w3.org/TR/xmlschema11-2/#dateTime" rel="rdfs:range"
 resource="xsd:dateTime"><code>xsd:dateTime</code></a>
+
+Cardinality:  
+`1`
 
 <a href="https://vocab.methodandstructure.com/cache-metadata#"
 rel="rdfs:isDefinedBy">Back to Top</a>
@@ -158,7 +177,7 @@ rel="rdfs:isDefinedBy">Back to Top</a>
 </div>
 
 <div id="method" class="section" about="cache:method"
-typeof="owl:ObjectProperty">
+typeof="owl:ObjectProperty owl:FunctionalProperty">
 
 ### `method`
 
@@ -172,13 +191,16 @@ Range:
 <a href="https://www.w3.org/TR/HTTP-in-RDF10/#MethodClass"
 rel="rdfs:range" resource="ht:Method"><code>ht:Method</code></a>
 
+Cardinality:  
+`1`
+
 <a href="https://vocab.methodandstructure.com/cache-metadata#"
 rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
 
 <div id="origin" class="section" about="cache:origin"
-typeof="owl:ObjectProperty">
+typeof="owl:ObjectProperty owl:FunctionalProperty">
 
 ### `origin`
 
@@ -192,17 +214,23 @@ Range:
 <a href="https://www.w3.org/TR/rdf-schema/#ch_resource" rel="rdfs:range"
 resource="rdfs:Resource"><code>rdfs:Resource</code></a>
 
+Cardinality:  
+`1`
+
 <a href="https://vocab.methodandstructure.com/cache-metadata#"
 rel="rdfs:isDefinedBy">Back to Top</a>
 
 </div>
 
 <div id="principal" class="section" about="cache:principal"
-typeof="owl:ObjectProperty">
+typeof="owl:ObjectProperty owl:FunctionalProperty">
 
 ### `principal`
 
-This relates the cache entry to the origin resource that was retrieved.
+This relates the cache entry to an authentication principal, if
+applicable.
+
+The presence of a principal implies the cache entry is private.
 
 Domain:  
 <a href="https://vocab.methodandstructure.com/cache-metadata#"
@@ -231,5 +259,8 @@ resource="#ch.references" typeof="bibo:DocumentPart">
 - <a href="https://pav-ontology.github.io/pav/" rel="rdfs:seeAlso"><span
   property="dct:title">PAV — Provenance, Authoring and
   Versioning</span></a>
+- <a
+  href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+  rel="rdfs:seeAlso">DCMI Metadata Terms</a>
 
 </div>
