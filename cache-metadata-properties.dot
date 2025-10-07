@@ -1,6 +1,77 @@
 digraph {
-    graph [bgcolor=transparent,rankdir=TB];
+    graph [bgcolor=transparent,rankdir=LR];
     node [shape=box,style=rounded,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
     edge [concentrate=true,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
 
+    // third-party classes
+    subgraph {
+        node [shape=box, style=dashed];
+
+        rdfs_Resource [label="rdfs:Resource", target="_parent", href="https://www.w3.org/TR/rdf11-schema/#ch_resource"];
+
+        ht_Method [label="ht:Method", target="_parent" href="https://www.w3.org/TR/HTTP-in-RDF10/#MethodClass"];
+        ht_MessageHeader [label="ht:MessageHeader", target="_parent" href="https://www.w3.org/TR/HTTP-in-RDF10/#MessageHeaderClass"];
+
+        prov_Agent  [label="prov:Agent", target="_parent", href="https://www.w3.org/TR/prov-o/#Agent"];
+        //prov_Entity [label="prov:Entity", target="_parent", href="https://www.w3.org/TR/prov-o/#Entity"];
+    }
+
+    // our classes
+
+    subgraph {
+        node [shape=box, style=""];
+
+        cache_Entry [label="cache:Entry", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#Entry"];
+    }
+
+    // third-party datatypes
+    subgraph {
+        node [shape=note,style=dashed];
+        xsd_dateTime [label="xsd:dateTime", target="_parent", href="https://www.w3.org/TR/xmlschema11-2/#dateTime"];
+    }
+
+    // third-party properties
+
+    subgraph {
+        node [style="dashed,rounded"];
+        // dct_format;
+        // dct_language;
+        // dct_modified;
+        // prov_generatedAtTime;
+    }
+
+    // our properties
+    cache_entity [label="cache:entity", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#entity"];
+    cache_expires [label="cache:expires", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#expires"];
+    cache_header [label="cache:header", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#header"];
+    cache_method [label="cache:method", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#method"];
+    cache_origin [label="cache:origin", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#origin"];
+    cache_principal [label="cache:principal", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#principal"];
+
+    // relations
+
+    subgraph {
+        edge [style=dashed, label="rdfs:subPropertyOf"];
+    }
+
+    subgraph {
+        edge [style=dashed, dir=back, label="rdfs:domain"];
+        cache_Entry -> cache_entity;
+        cache_Entry -> cache_expires;
+        cache_Entry -> cache_header;
+        cache_Entry -> cache_method;
+        cache_Entry -> cache_origin;
+        cache_Entry -> cache_principal;
+    }
+
+    subgraph {
+        edge [style=dashed, label="rdfs:range"];
+
+        cache_entity  -> rdfs_Resource;
+        cache_expires -> xsd_dateTime;
+        cache_header -> ht_MessageHeader;
+        cache_method -> ht_Method;
+        cache_origin -> rdfs_Resource;
+        cache_principal -> prov_Agent;
+    }
 }

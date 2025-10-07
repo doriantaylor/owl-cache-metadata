@@ -1,0 +1,27 @@
+@prefix cache: <https://vocab.methodandstructure.com/cache-metadata#> .
+@prefix tfo:   <https://vocab.methodandstructure.com/transformation#> .
+@prefix ht:    <http://www.w3.org/2011/http#> .
+@prefix hth:   <http://www.w3.org/2011/http-headers#> .
+@prefix htm:   <http://www.w3.org/2011/http-methods#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:uuid:b30c0e75-6b53-4212-8b95-a04629aa03d9> a cache:Entry ;
+  cache:entity <ni:///sha-256;ocz5wuIt2_E5vOW_DqPkJSONCUg61TPJ8c81fBKH5co> ;
+  cache:expires "2025-10-07T01:52:07Z"^^xsd:dateTime ;
+  cache:header [
+    a ht:RequestHeader ;
+    ht:hdrName hth:accept ;
+    ht:fieldName "Accept";
+    ht:fieldValue "text/html, application/xhtml+xml, */*;q=0.1" ], [
+    a ht:RequestHeader ;
+    ht:hdrName hth:accept-language ;
+    ht:fieldName "Accept-Language";
+    ht:fieldValue "en-us, en, fr;q=0.8" ] ;
+  cache:method htm:GET ;
+  cache:origin <https://internet.home/page> ;
+  cache:principal <mailto:some@personal.email> ;
+  dct:format "text/html"^^tfo:content-type ;
+  dct:language "en"^^xsd:token ;
+  dct:modified "2025-10-07T01:22:07Z"^^xsd:dateTime ;
+  prov:generatedAtTime "2025-10-07T01:22:07Z"^^xsd:dateTime .

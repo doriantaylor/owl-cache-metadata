@@ -1,5 +1,46 @@
 digraph {
-    graph [bgcolor=transparent];
+    graph [bgcolor=transparent,rankdir=LR];
     node [shape=box,color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
     edge [color="#000000",fontcolor="#000000",fontname="Lucida Grande, Lucida Sans Unicode, sans-serif"];
+
+    // third-party classes
+    subgraph {
+        node [style=dashed];
+
+        rdfs_Resource [label="rdfs:Resource", target="_parent", href="https://www.w3.org/TR/rdf11-schema/#ch_resource"];
+
+        ht_Method [label="ht:Method", target="_parent" href="https://www.w3.org/TR/HTTP-in-RDF10/#MethodClass"];
+        ht_MessageHeader [label="ht:MessageHeader", target="_parent" href="https://www.w3.org/TR/HTTP-in-RDF10/#MessageHeaderClass"];
+
+        // foaf_Person [label="foaf:Person", target="_parent", href="http://xmlns.com/foaf/spec/#term_Person"];
+        prov_Agent  [label="prov:Agent", target="_parent", href="https://www.w3.org/TR/prov-o/#Agent"];
+        prov_Entity [label="prov:Entity", target="_parent", href="https://www.w3.org/TR/prov-o/#Entity"];
+        // sioc_UserAccount [label="sioc:UserAccount", target="_parent", href="http://rdfs.org/sioc/spec/#term_UserAccount"];
+    }
+
+    // third-party datatypes
+    subgraph {
+        node [shape=note,style=dashed];
+        xsd_dateTime [label="xsd:dateTime", target="_parent", href="https://www.w3.org/TR/xmlschema11-2/#dateTime"];
+    }
+
+    // our classes
+
+    cache_Entry [label="cache:Entry", target="_parent", href="https://vocab.methodandstructure.com/cache-metadata#Entry"];
+
+    // subclass relations
+
+    subgraph {
+        edge [style=dashed, dir=back, label="rdfs:subClassOf"];
+
+        prov_Entity -> cache_Entry;
+    }
+
+    // main relations
+
+    cache_Entry -> ht_MessageHeader [label="cache:header"];
+    cache_Entry -> ht_Method [label="cache:method"];
+    cache_Entry -> prov_Agent [label="cache:principal"];
+    cache_Entry -> rdfs_Resource [label="cache:entity,\ncache:origin"];
+    cache_Entry -> xsd_dateTime [label="cache:expires"];
 }
